@@ -37,6 +37,17 @@ const isValidUrl = urlString => {
 
 
 // ================================================================= //
+// --- Disable the download button when the page is refreshed ------ //
+// ================================================================= //
+
+window.addEventListener("load", (e) => {
+
+    const btnSaveAs = document.getElementById("btnSaveAs");
+    btnSaveAs.setAttribute("disabled", "");
+});
+
+
+// ================================================================= //
 // --- Disabling form submissions if there are invalid fields ------ //
 // ================================================================= //
 
@@ -68,17 +79,31 @@ const isValidUrl = urlString => {
 const urlForm = document.getElementById("urlForm");
 
 urlForm.addEventListener("submit", e => {
+    e.preventDefault();
+    e.stopPropagation();
 
     let url = document.getElementById("inputURL").value;
 
-    if (!isValidUrl(url)) {
-        e.preventDefault();
-        e.stopPropagation();
-    } else {
-        urlForm.classList.add('was-validated');
-        console.log(`URL: ${url}`);
+    if (isValidUrl(url)) {
+
+        // Remove previous QR Code
+        document.getElementById("QRCode").innerHTML = "";
+
+        // Create and display new QRCode
+        new QRCode(document.getElementById("QRCode"), {
+            text: url,
+            width: 256,
+            height: 256,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+        
+        // Enable the download button
+        let btnSaveAs = document.getElementById("btnSaveAs");
+        btnSaveAs.removeAttribute('disabled');
     }
-    
-    
+
+    urlForm.classList.add('was-validated');
 
 }, false);
