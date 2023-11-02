@@ -20,6 +20,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 
+    <!-- Load QRCode.js library -->
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
     <!-- Our custom CSS and JS -->
     <link rel="stylesheet" href="./style.css">
     <title> QR Code Generator | AzrMicael</title>
@@ -111,11 +114,17 @@
                         <div class="col-md-5 col-lg-5">
                             <div class="card">
                                 <div class="col-md-9 mx-auto">
-                                    <div class="d-flex flex-column justify-content-center h-100">
-                                        <img src="assets/qrcode-my-github.png" id="qrCodePNG" class="img-fluid rounded-start" alt="coupon QR code">
+                                    <div class="d-flex flex-column justify-content-center py-4">
+                                        <div class="m-auto" id="QRCode"></div>
+
+                                        <!-- Default QR Code -->
+                                        <script id="defaultQRCode" type="text/javascript">
+                                            new QRCode(document.getElementById("QRCode"), {text:"https://github.com/azrmicael", colorDark:"#6C757D"});
+                                        </script>
                                     </div>
                                 </div>
-                                <button type="button" class="btn btn-primary" id="btnSaveAs" aria-label="Download QR Code"> <!-- disabled -->
+
+                                <button type="button" onclick="saveAs('png')" class="btn btn-primary" id="btnSaveAs" aria-label="Download QR Code" disabled>
                                     <i class="fa-solid fa-download me-2"></i>Download PNG
                                 </button>
                             </div>
