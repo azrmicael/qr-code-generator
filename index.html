@@ -26,7 +26,7 @@
     <script src="./script.js" defer></script>
 </head>
 
-<body id="qr-code" class="qr-code">
+<body id="qrCode" class="qr-code">
 
     <!-- Header -->
     <header id="header" class="header">
@@ -91,16 +91,38 @@
                     (<a class="text-reset" href="https://en.wikipedia.org/wiki/QR_code"><i class="fa-brands fa-wikipedia-w mx-1"></i></a>)
                 </p>
 
-                <form id="urlForm" class="needs-validation" novalidate>
-                    <div class="mb-3">
-                        <label for="inputURL" class="form-label">Enter URL</label>
-                        <input type="text" class="form-control" id="inputURL" aria-describedby="textHelp" required>
-                        <div id="textHelp" class="form-text fs-300 clr-white">Link to open when scanned, e.g. https://example.com/</div>
-                        <div class="invalid-feedback fs-300">Please check the data provided.</div>
-                    </div>
+                <div class="bg-dark rounded p-3 mb-4">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 lh-lg">
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                        <!-- URL Form -->
+                        <div class="col-md-7 col-lg-7">
+                            <form id="urlForm" class="needs-validation" novalidate>
+                                <div class="mb-2">
+                                    <label for="inputURL" class="form-label">Enter URL</label>
+                                    <input type="text" class="form-control" id="inputURL" aria-describedby="textHelp" required>
+                                    <div id="textHelp" class="form-text fs-300 clr-white">Link to open when scanned, e.g. https://example.com/</div>
+                                    <div class="invalid-feedback fs-300">Please check the data provided.</div>
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-4">Submit</button>
+                            </form>
+                        </div>
+
+                        <!-- QR Code to Download -->
+                        <div class="col-md-5 col-lg-5">
+                            <div class="card">
+                                <div class="col-md-9 mx-auto">
+                                    <div class="d-flex flex-column justify-content-center h-100">
+                                        <img src="assets/qrcode-my-github.png" id="qrCodePNG" class="img-fluid rounded-start" alt="coupon QR code">
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary" id="btnSaveAs" aria-label="Download QR Code"> <!-- disabled -->
+                                    <i class="fa-solid fa-download me-2"></i>Download PNG
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
             </div>
         </section>
