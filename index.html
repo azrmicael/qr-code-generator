@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<!-- QR Code Generator -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/qrcode-my-github.png">
+
+    <!-- Bootstrap CSS and JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css" integrity="sha512-KOWhIs2d8WrPgR4lTaFgxI35LLOp5PRki/DxQvb7mlP29YZ5iJ5v8tiLWF7JLk5nDBlgPP1gHzw96cZ77oD7zQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Our custom CSS and JS -->
+    <link rel="stylesheet" href="./style.css">
+    <title> QR Code Generator | AzrMicael</title>
+    <script src="./script.js" defer></script>
+</head>
+
+<body id="qr-code" class="qr-code">
+
+    <!-- Header -->
+    <header id="header" class="header">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+            <div class="container-fluid">
+
+                <a class="navbar-brand" href="./index.html">
+                    <i class="fa-solid fa-qrcode"></i> QR Code Generator
+                </a>
+
+                <button class="navbar-toggler text-white shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="sr-only">Menu</span>
+                    <svg fill="currentColor" class="hamburger" viewBox="0 0 100 100" width="250">
+                        <rect class="line top" width="80" height="10" x="10" y="15" rx="5"></rect>
+                        <rect class="line middle" width="80" height="10" x="10" y="45" rx="5"></rect>
+                        <rect class="line bottom" width="80" height="10" x="10" y="75" rx="5"></rect>
+                    </svg>
+              </button>
+
+              <div class="collapse navbar-collapse" data-visible="false" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="./index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://azrmicael.github.io/frontend-mentor/">Frontend Mentor</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://azrmicael.github.io/free-code-camp/">FreeCodeCamp</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://azrmicael.github.io/my-frameworks/">My Frameworks</a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://github.com/azrmicael">Github</a></li>
+                    </ul>
+              </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main id="main" class="main">
+
+        <!-- Banner Section -->
+        <section id="banner" class="banner">          
+            <div class="banner--overlay h-100 w-100">
+                <div class="container-custom w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                    <h1 class="fs-800 fw-bold">QR Code Generator</h1>
+                    <p class="fs-400">Create your QR Code for FREE.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section id="content" class="content">
+            <div class="container py-5">
+                <h1 class="fs-600 ff-header fw-bold mb-4">QR Code Generator</h1>
+
+                <!-- <h2 class="fs-400 ff-header fw-bold mb-4">Free QR Code Generator in PNG. Never expires & limited.</h2> -->
+
+                <p class="text mx-auto mb-4">
+                    <i class="fa-solid fa-quote-left me-2"></i> 
+                    <i>A QR code is a type of two-dimensional matrix barcode, invented in 1994, by Japanese company Denso Wave 
+                    for labelling automobile parts. A barcode is a machine-readable optical image that contains information 
+                    specific to the labelled item. In practice, QR codes contain data for a locator, an identifier, and web 
+                    tracking. To efficiently store data, QR codes use four standardized modes of encoding numeric, 
+                    alphanumeric, byte or binary, and kanji.</i> 
+                    <i class="fa-solid fa-quote-right mx-2"></i>
+                    (<a class="text-reset" href="https://en.wikipedia.org/wiki/QR_code"><i class="fa-brands fa-wikipedia-w mx-1"></i></a>)
+                </p>
+
+                <form id="urlForm" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="inputURL" class="form-label">Enter URL</label>
+                        <input type="text" class="form-control" id="inputURL" aria-describedby="textHelp" required>
+                        <div id="textHelp" class="form-text fs-300 clr-white">Link to open when scanned, e.g. https://example.com/</div>
+                        <div class="invalid-feedback fs-300">Please check the data provided.</div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer text-center text-lg-start bg-dark text-white mt-3">
+
+        <!-- Social Networks -->
+        <section class="container d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <div class="me-5 d-none d-lg-block"><span>Where can you find me:</span></div>
+            <div>
+                <a href="https://www.linkedin.com/in/azrmicael" class="m-1 text-reset"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="mailto:azr.micael@gmail.com" class="m-1 text-reset"><i class="fa-regular fa-envelope"></i></a>
+                <a href="https://github.com/azrmicael" class="m-1 text-reset"><i class="fa-brands fa-github"></i></a>
+                <a href="https://codepen.io/azrmicael" class="m-1 text-reset"><i class="fa-brands fa-codepen"></i></a>
+                <a href="https://discordapp.com/users/694290997278146590" class="m-1 text-reset"><i class="fa-brands fa-discord"></i></a>
+                <a href="https://instagram.com/azrmicael" class="m-1 text-reset"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </section>
+        
+        <section class="container text-center text-md-start mt-5">
+            <div class="row mt-3">
+
+                <!-- AzrMicael -->
+                <div class="col-md-5 col-lg-6 mb-4">
+                    <h3 class="fs-400 fw-bold mb-4 img-inline-with-text">
+                        <!-- <img src="assets/favicon.png" alt="logo">  -->
+                        AzrMicael
+                    </h3>
+                    <p>
+                        In the last few months I've been getting more and more interested in programming and I 
+                        started studying some of the technologies used in web development, my focus has been 
+                        the front-end part, so I've been studying HTML5, CSS3 and JavaScript.
+                    </p>
+                </div>
+                
+                <hr class="d-md-none">
+        
+                <!-- Useful links -->
+                <div class="col-md-3 col-lg-2 mb-4">
+                    <h3 class="fs-400 fw-bold mb-4">Useful links</h3>
+                    <p><a href="./index.html" class="text-reset">Home</a></p>
+                    <p><a href="https://azrmicael.github.io/frontend-mentor/" class="text-reset">Frontend Mentor</a></p>
+                    <p><a href="https://azrmicael.github.io/free-code-camp/" class="text-reset">FreeCodeCamp</a></p>
+                    <p><a href="https://azrmicael.github.io/my-frameworks/" class="text-reset">My Frameworks</a></p>
+                    <p><a href="https://github.com/azrmicael" class="text-reset">Github</a></p>
+                </div>
+
+                <hr class="d-md-none">
+
+                <!-- Contact -->
+                <div class="col-md-4 col-lg-3 mb-4">
+                    <h3 class="fs-400 fw-bold mb-4">Contact</h3>
+                    
+                    <p><i class="fa-solid fa-envelope me-2"></i>azr.micael@gmail.com</p>
+                    <!-- <p><i class="fa-solid fa-phone me-2"></i>(234) 567-8901</p> -->
+                </div>
+
+            </div>
+        </section>
+  
+        <!-- Copyright -->
+        <section class="container fs-300 text-center py-3">
+            Copyright © 2023 AzrMicael - All rights reserved.
+        </section>
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,229 @@
+/* ======================================== */
+/* --- CUSTOM PROPERTIES ------------------ */
+/* ======================================== */
+
+:root {
+    /* my colors */
+    --clr-dark: #0a1118;
+    --clr-white: #ffffff;
+    --clr-accent-blue: #2E77B8;
+    --clr-accent-red: #E15240;
+
+    /* bootstrap colors */
+    --clr-less-dark: #212529; /* .bg-dark */
+
+    /* font-sizes */
+    --fs-900: clamp(3.05rem, 2.72vw + 2.37rem, 5rem);
+    --fs-800: clamp(2.44rem, 1.83vw + 1.98rem, 3.75rem);
+    --fs-700: clamp(1.95rem, 1.2vw + 1.65rem, 2.81rem);
+    --fs-600: clamp(1.56rem, 0.77vw + 1.37rem, 2.11rem);
+    --fs-500: clamp(1.25rem, 0.47vw + 1.13rem, 1.58rem);
+    --fs-400: clamp(1rem, 0.26vw + 0.93rem, 1.19rem);
+    --fs-300: clamp(0.8rem, 0.13vw + 0.77rem, 0.89rem);
+    --fs-200: clamp(0.64rem, 0.04vw + 0.63rem, 0.67rem);
+
+    /* font-families */
+    --ff-primary: 'Open Sans', sans-serif; /* header */
+    --ff-secondary: 'Lato', sans-serif; /* body */
+}
+
+
+/* ======================================== */
+/* --- CSS RESET -------------------------- */
+/* ======================================== */
+
+/*
+  1. Use a more-intuitive box-sizing model
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+body, h1, h2, h3, h4, h5, p, figure, picture {
+    margin: 0;
+}
+/*
+  3. Set the font-weight
+*/
+h1, h2, h3, h4, h5, h6, p {
+    font-weight: 400;
+}
+/* 
+  4. Set up the body
+*/
+body {
+    background-color: var(--clr-dark);
+    color: var(--clr-white);
+    font-size: var(--fs-400);
+    line-height: 1.5;
+    min-height: 100vh;
+}
+/*
+  5. Improve media defaults
+*/
+img, picture, svg, canvas, video {
+    display: block;
+    max-width: 100%;
+}
+/*
+  6. Remove built-in form typography styles
+*/
+input, textarea, button, select {
+    font: inherit;
+}
+/*
+  7. Add scroll animation
+*/
+html {
+    scroll-behavior: smooth;
+}
+/*
+  8. Remove animations for people who've turned them off
+*/
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* ======================================== */
+/* --- UTILITY CLASSES -------------------- */
+/* ======================================== */
+
+/* screen reader only: hides the element visually */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* added line*/
+    border: 0;
+}
+
+.skip-to-content {
+    position: absolute;
+    z-index: 9999;
+    background: hsl(var(--clr-white));
+    color: hsl(var(--clr-dark));
+    padding: 0.5em 1em;
+    margin-inline: auto;
+    transform: translateY(-100%);
+    transition: transform 250ms ease-in;
+}
+
+.skip-to-content:focus {
+    transform: translateY(0);
+}
+
+/* --- Colors ------ */
+
+.clr-accent-blue { color: var(--clr-accent-blue); }
+.clr-accent-red { color: var(--clr-accent-red); }
+.clr-dark { color: var(--clr-dark); }
+.clr-white { color: var(--clr-white); }
+.clr-dark-less { color: var(--clr-less-dark); } /* .bg-dark */
+
+/* --- Typography ------ */
+
+.ff-header { font-family: var(--ff-primary); }
+.ff-body { font-family: var(--ff-secondary);}
+
+.uppercase { text-transform: uppercase; }
+
+.fs-900 { font-size: var(--fs-900); }
+.fs-800 { font-size: var(--fs-800); }
+.fs-700 { font-size: var(--fs-700); }
+.fs-600 { font-size: var(--fs-600); }
+.fs-500 { font-size: var(--fs-500); }
+.fs-400 { font-size: var(--fs-400); }
+.fs-300 { font-size: var(--fs-300); }
+.fs-200 { font-size: var(--fs-200); }
+
+/* ======================================== */
+/* --- COMPONENTS ------------------------- */
+/* ======================================== */
+
+/* --- Header ------ */
+
+.header {
+    position: relative;
+    height: 3.5rem;
+    z-index: 999;
+}
+
+/* --- Navbar toggler (button) ------ */
+
+.navbar-toggler {
+    background: transparent;
+    width: 3rem;
+    aspect-ratio: 1;
+    border: 0;
+}
+
+.navbar-toggler .line {
+    transition: 
+        transform 300ms ease-in 300ms,
+        rotate 300ms ease-in,
+        opacity 0ms 300ms
+    ;
+    transform-origin: center;
+}
+
+.navbar-toggler[aria-expanded="true"] .line {
+    transition: 
+        transform 300ms ease-in,
+        rotate 300ms ease-in 300ms,
+        opacity 0ms 300ms
+    ;
+}
+
+.navbar-toggler[aria-expanded="true"] .top {
+    transform: translateY(30px);
+    rotate: 45deg;
+}
+
+.navbar-toggler[aria-expanded="true"] .middle {
+    opacity: 0;
+}
+
+.navbar-toggler[aria-expanded="true"] .bottom {
+    transform: translateY(-30px);
+    rotate: -45deg;
+}
+
+
+/* ======================================== */
+/* --- PAGE SPECIFIC BANNER IMAGE --------- */
+/* ======================================== */
+
+.banner {
+    height: 21.875rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.banner--overlay {
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+/* --- QR Code Generator Page ------ */
+
+.qr-code .banner {
+    background-image: url(assets/qrcode-banner-mobile.png);
+}
+
+@media(min-width: 62rem) {
+    .qr-code .banner {
+        background-image: url(assets/qrcode-banner-desktop.png);
+    }
+}
