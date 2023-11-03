@@ -97,7 +97,7 @@ window.addEventListener("load", (e) => {
 const downloadQRCode = (QRCodeImg) => {
     var a = document.createElement("a");
     a.href = QRCodeImg;
-    a.download = `qr-code-${dateAndTime}.png`; // qr-code-2023-11-3@14'23'56.png
+    a.download = `qr-code.png`; // qr-code-2023-11-3@14'23'56.png
     a.click();
 }
 
