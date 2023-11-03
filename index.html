@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Load QRCode.js library -->
-    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
     <!-- Our custom CSS and JS -->
     <link rel="stylesheet" href="./style.css">
@@ -29,7 +29,7 @@
     <script src="./script.js" defer></script>
 </head>
 
-<body id="qrCode" class="qr-code">
+<body id="qr-code" class="qr-code">
 
     <!-- Header -->
     <header id="header" class="header">
@@ -67,7 +67,7 @@
     <main id="main" class="main">
 
         <!-- Banner Section -->
-        <section id="banner" class="banner">          
+        <section id="banner" class="banner">
             <div class="banner--overlay h-100 w-100">
                 <div class="container-custom w-100 h-100 d-flex flex-column justify-content-center align-items-center">
                     <h1 class="fs-800 fw-bold">QR Code Generator</h1>
@@ -84,12 +84,12 @@
                 <!-- <h2 class="fs-400 ff-header fw-bold mb-4">Free QR Code Generator in PNG. Never expires & limited.</h2> -->
 
                 <p class="text mx-auto mb-4">
-                    <i class="fa-solid fa-quote-left me-2"></i> 
+                    <i class="fa-solid fa-quote-left me-2"></i>
                     <i>A QR code is a type of two-dimensional matrix barcode, invented in 1994, by Japanese company Denso Wave 
                     for labelling automobile parts. A barcode is a machine-readable optical image that contains information 
                     specific to the labelled item. In practice, QR codes contain data for a locator, an identifier, and web 
                     tracking. To efficiently store data, QR codes use four standardized modes of encoding numeric, 
-                    alphanumeric, byte or binary, and kanji.</i> 
+                    alphanumeric, byte or binary, and kanji.</i>
                     <i class="fa-solid fa-quote-right mx-2"></i>
                     (<a class="text-reset" href="https://en.wikipedia.org/wiki/QR_code"><i class="fa-brands fa-wikipedia-w mx-1"></i></a>)
                 </p>
@@ -106,7 +106,7 @@
                                     <div id="textHelp" class="form-text fs-300 clr-white">Link to open when scanned, e.g. https://example.com/</div>
                                     <div class="invalid-feedback fs-300">Please check the data provided.</div>
                                 </div>
-                                <button type="submit" class="btn btn-primary mb-4">Submit</button>
+                                <!-- <button type="submit" class="btn btn-primary mb-4">Submit</button> -->
                             </form>
                         </div>
 
@@ -115,16 +115,17 @@
                             <div class="card">
                                 <div class="col-md-9 mx-auto">
                                     <div class="d-flex flex-column justify-content-center py-4">
-                                        <div class="m-auto" id="QRCode"></div>
+                                        <div id="demoQR" class="m-auto"></div>
+                                        <div id="qrCode" class="m-auto"></div>
 
                                         <!-- Default QR Code -->
                                         <script id="defaultQRCode" type="text/javascript">
-                                            new QRCode(document.getElementById("QRCode"), {text:"https://github.com/azrmicael", colorDark:"#6C757D"});
+                                            new QRCode(document.getElementById("demoQR"), {text:"https://github.com/azrmicael", colorDark:"#6C757D"});
                                         </script>
                                     </div>
                                 </div>
 
-                                <button type="button" onclick="saveAs('png')" class="btn btn-primary" id="btnSaveAs" aria-label="Download QR Code" disabled>
+                                <button id="saveAsBtn" type="button" class="btn btn-primary" aria-label="Download QR Code" disabled>
                                     <i class="fa-solid fa-download me-2"></i>Download PNG
                                 </button>
                             </div>
@@ -159,7 +160,7 @@
                 <!-- AzrMicael -->
                 <div class="col-md-5 col-lg-6 mb-4">
                     <h3 class="fs-400 fw-bold mb-4 img-inline-with-text">
-                        <!-- <img src="assets/favicon.png" alt="logo">  -->
+                        <!-- <img src="assets/favicon.png" alt="logo"> -->
                         AzrMicael
                     </h3>
                     <p>
