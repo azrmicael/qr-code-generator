@@ -1,3 +1,23 @@
+// --- Variables and constants used ------ //
+
+let currentDate = new Date();
+let demoQR = document.getElementById("demoQR");
+let inputURL = document.getElementById("inputURL");
+let oldQR = document.getElementById("qrCode");
+let saveAsBtn = document.getElementById("saveAsBtn");
+
+// Determine the current date and time
+let dateAndTime = ""
+                + currentDate.getFullYear() + "-"  
+                + (currentDate.getMonth() + 1)  + "-" 
+                + currentDate.getDate() + "@"
+                + currentDate.getHours() + "'"  
+                + currentDate.getMinutes() + "'" 
+                + currentDate.getSeconds()
+;
+console.log(dateAndTime); // --> 2023-11-3@14'24'56
+
+
 // ================================================================= //
 // --- When someone clicks the hamburger button -------------------- //
 // ================================================================= //
@@ -41,9 +61,7 @@ const isValidUrl = urlString => {
 // ================================================================= //
 
 window.addEventListener("load", (e) => {
-
-    const btnSaveAs = document.getElementById("btnSaveAs");
-    btnSaveAs.setAttribute("disabled", "");
+    saveAsBtn.setAttribute("disabled", "");
 });
 
 
@@ -73,37 +91,57 @@ window.addEventListener("load", (e) => {
 
 
 // ================================================================= //
-// --- Get data from URL form submission --------------------------- //
+// --- Create the link (a) to download the QR Code ----------------- //
 // ================================================================= //
 
-const urlForm = document.getElementById("urlForm");
+const downloadQRCode = (QRCodeImg) => {
+    var a = document.createElement("a");
+    a.href = QRCodeImg;
+    a.download = `qr-code-${dateAndTime}.png`; // qr-code-2023-11-3@14'23'56.png
+    a.click();
+}
 
-urlForm.addEventListener("submit", e => {
-    e.preventDefault();
-    e.stopPropagation();
 
-    let url = document.getElementById("inputURL").value;
+// ================================================================= //
+// --- Generate a QR Code ------------------------------------------ //
+// ================================================================= //
 
-    if (isValidUrl(url)) {
+const generateQR = (content) => {
+    demoQR.style.display = "none"
+    oldQR.innerHTML = ""
 
-        // Remove previous QR Code
-        document.getElementById("QRCode").innerHTML = "";
+    new QRCode(document.getElementById("qrCode"), {
+        text: content,
+        width: 256,
+        height: 256,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+}
 
-        // Create and display new QRCode
-        new QRCode(document.getElementById("QRCode"), {
-            text: url,
-            width: 256,
-            height: 256,
-            colorDark : "#000000",
-            colorLight : "#ffffff",
-            correctLevel : QRCode.CorrectLevel.H
-        });
-        
-        // Enable the download button
-        let btnSaveAs = document.getElementById("btnSaveAs");
-        btnSaveAs.removeAttribute('disabled');
+
+// ================================================================= //
+// --- EventListener to generate the final QR code ----------------- //
+// ================================================================= //
+
+inputURL.addEventListener("keyup", (e) => {
+    if (e.target.value == "") {
+        oldQR.innerHTML = ""
+        demoQR.style.display = "block"
+        saveAsBtn.setAttribute("disabled", "");
+    } else {
+        generateQR(e.target.value)
+        saveAsBtn.removeAttribute('disabled');
     }
+});
 
-    urlForm.classList.add('was-validated');
 
-}, false);
+// ================================================================= //
+// --- EventListener to save the QR Code as PNG -------------------- //
+// ================================================================= //
+
+saveAsBtn.addEventListener("click", () => {
+    let imgSrc = document.getElementById("qrCode").querySelector("img").getAttribute("src");
+    downloadQRCode(imgSrc);
+});
